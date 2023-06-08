@@ -15,19 +15,20 @@ export const ProposalDetailsPage = ({ talkId }) => {
     const [talk, setTalk] = useState()
 
     useEffect(() => {
-        getTalk(talkId).then(talk =>
-            setTalk(talk)
-        );
+        getTalk(talkId).then(talk => {
+            setTalk(talk);
+            console.log(talk);
+        });
     }, [])
 
     if (isNotFound) {
-        return <NotFound/>;
+        return <NotFound />;
     }
 
     return (
         <Page
             className="ProposalDetailsPage"
-            title={!talk ? "…" : "title"}
+            title={!talk ? "…" : talk.title}
         >
             <div className="ProposalDetailsPage__content">
                 <div>
@@ -38,8 +39,8 @@ export const ProposalDetailsPage = ({ talkId }) => {
                         back to Call for Papers
                     </Link>
                 </div>
-                <Loading/>
-                <ProposalDetails talk={{}}/>
+                {!talk && <Loading />}
+                {talk && <ProposalDetails talk={talk} />}
             </div>
         </Page>
     );

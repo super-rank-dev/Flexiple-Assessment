@@ -3,12 +3,14 @@ import classNames from "classnames";
 
 import "./DetailsSection.css";
 
-const DetailsSection = ({ className, name }) => (
+const DetailsSection = ({ className, name, children }) => (
     <section className={classNames("DetailsSection", className)}>
         <div className="DetailsSection__name">
             {name}
         </div>
-        <div className="DetailsSection__content"/>
+        <div className="DetailsSection__content">
+            {children}
+        </div>
     </section>
 );
 

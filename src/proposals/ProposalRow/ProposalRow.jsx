@@ -13,18 +13,21 @@ const ProposalRow = ({ proposal, onStatusUpdate }) => {
     const { id, title, status } = proposal;
     return (
         <div data-testid={`proposal-id-${id}`} className={classNames("ProposalRow", "ProposalRow--accepted")}>
-            <div className="ProposalsRow__status_indicator"/>
+            <div className="ProposalsRow__status_indicator" />
             <div className="ProposalsRow__title">
                 {title}
             </div>
-            <div className="ProposalsRow__speaker"/>
+            <div className="ProposalsRow__speaker" />
             <div className="ProposalsRow__category">
-                category: {}
+                category: { }
             </div>
             <div className="ProposalsRow__status">
                 status: {status}
             </div>
-            <button disabled className="ProposalsRow__accept_button_placeholder">
+            <button
+                className="ProposalsRow__accept_button"
+                onClick={withoutEventDefault(() => onStatusUpdate(id, "accepted"))}
+            >
                 Accept
             </button>
             <button
