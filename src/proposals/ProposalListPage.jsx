@@ -18,6 +18,7 @@ export const ProposalListPage = () => {
     }, []);
 
     const updateProposalStatus = (id, status) => {
+        setProposalStatus(id, 'pending');
         setProposals((previousProposals) => {
             return previousProposals.map(proposal =>
                 proposal.id === id ? { ...proposal, status } : proposal,
